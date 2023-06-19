@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "outDir": "bin",
+    "target": "es2018",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "pretty": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "files": [
+    "index.ts",
+    "vpc.ts",
+    "ecr.ts",
+    "securityGroups.ts",
+    "cluster.ts",
+    "alb.ts",
+    "taskDefinition.ts",
+    "service.ts",
+    "autoscaling.ts"
+  ]
+}

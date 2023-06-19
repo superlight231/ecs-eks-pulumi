@@ -1,0 +1,17 @@
+{
+  "name": "ecs-fargate-case-study",
+  "version": "1.0.0",
+  "description": "Sample ECS Fargate deployment on AWS using Pulumi",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "^3.80.0",
+    "@pulumi/aws": "^6.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^5.1.6"
+  }
+}
