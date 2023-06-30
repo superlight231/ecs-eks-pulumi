@@ -6,6 +6,11 @@ const config = new pulumi.Config();
 const imageTag = config.get("imageTag") || "latest";
 const containerPort = 8080;
 
+export const logGroup = new aws.cloudwatch.LogGroup("app-log-group", {
+    name: "/ecs/ecs-case-study",
+    retentionInDays: 14,
+});
+
 export const taskExecutionRole = new aws.iam.Role("task-exec-role", {
     assumeRolePolicy: JSON.stringify({
         Version: "2012-10-17",
@@ -45,14 +50,24 @@ export const taskDefinition = new aws.ecs.TaskDefinition("app-task", {
     requiresCompatibilities: ["FARGATE"],
     executionRoleArn: taskExecutionRole.arn,
     taskRoleArn: taskRole.arn,
-    containerDefinitions: repo.repositoryUrl.apply((repoUrl) =>
-        JSON.stringify([
-            {
-                name: "app",
-                image: `${repoUrl}:${imageTag}`,
-                portMappings: [{ containerPort, protocol: "tcp" }],
-                essential: true,
-            },
-        ])
-    ),
+    containerDefinitions: pulumi
+        .all([repo.repositoryUrl, logGroup.name])
+        .apply(([repoUrl, logGroupName]) =>
+            JSON.stringify([
+                {
+                    name: "app",
+                    image: `${repoUrl}:${imageTag}`,
+                    portMappings: [{ containerPort, protocol: "tcp" }],
+                    essential: true,
+                    logConfiguration: {
+                        logDriver: "awslogs",
+                        options: {
+                            "awslogs-group": logGroupName,
+                            "awslogs-region": aws.config.region || "us-east-1",
+                            "awslogs-stream-prefix": "app",
+                        },
+                    },
+                },
+            ])
+        ),
 });
