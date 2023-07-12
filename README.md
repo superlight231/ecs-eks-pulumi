@@ -53,3 +53,16 @@ pulumi up
 
 Push an image to the ECR repo created by this stack, then update `imageTag` and
 run `pulumi up` again to roll out a new revision.
+
+## Cost notes
+
+Default config runs 2 Fargate Spot tasks (0.25 vCPU / 0.5 GB each) behind an ALB
+and a single NAT gateway. Roughly $30-45/mo at idle in `us-east-1`, dominated by
+the ALB and NAT gateway hourly charges rather than compute.
+
+## Cleanup
+
+```bash
+pulumi destroy
+pulumi stack rm dev
+```
