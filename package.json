@@ -1,5 +1,5 @@
 {
-  "name": "ecs-fargate-case-study",
+  "name": "ecs-pulumi",
   "version": "1.0.0",
   "description": "Sample ECS Fargate deployment on AWS using Pulumi",
   "main": "index.ts",

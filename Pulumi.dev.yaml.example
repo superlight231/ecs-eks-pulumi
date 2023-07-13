@@ -1,4 +1,4 @@
 config:
   aws:region: us-east-1
-  ecs-fargate-case-study:vpcCidr: 10.20.0.0/16
-  ecs-fargate-case-study:imageTag: latest
+  ecs-pulumi:vpcCidr: 10.20.0.0/16
+  ecs-pulumi:imageTag: latest
