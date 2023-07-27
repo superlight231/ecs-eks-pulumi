@@ -1,4 +1,8 @@
 config:
   aws:region: us-east-1
-  ecs-pulumi:vpcCidr: 10.20.0.0/16
-  ecs-pulumi:imageTag: latest
+  ecs-eks-pulumi:vpcCidr: 10.20.0.0/16
+  ecs-eks-pulumi:imageTag: latest
+  ecs-eks-pulumi:eksNodeInstanceType: t3.medium
+  ecs-eks-pulumi:eksDesiredCapacity: 2
+  ecs-eks-pulumi:eksMinSize: 2
+  ecs-eks-pulumi:eksMaxSize: 5

@@ -20,6 +20,15 @@
     "alb.ts",
     "taskDefinition.ts",
     "service.ts",
-    "autoscaling.ts"
+    "autoscaling.ts",
+    "eks/index.ts",
+    "eks/cluster.ts",
+    "eks/namespace.ts",
+    "eks/ecrRepos.ts",
+    "eks/microservice.ts",
+    "eks/albController.ts",
+    "eks/services/apiGateway.ts",
+    "eks/services/ordersService.ts",
+    "eks/services/notificationsService.ts"
   ]
 }

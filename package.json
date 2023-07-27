@@ -1,14 +1,16 @@
 {
-  "name": "ecs-pulumi",
-  "version": "1.0.0",
-  "description": "Sample ECS Fargate deployment on AWS using Pulumi",
+  "name": "ecs-eks-pulumi",
+  "version": "1.1.0",
+  "description": "AWS ECS Fargate + EKS microservices deployment using Pulumi",
   "main": "index.ts",
   "scripts": {
     "build": "tsc --noEmit"
   },
   "dependencies": {
     "@pulumi/pulumi": "^3.80.0",
-    "@pulumi/aws": "^6.4.0"
+    "@pulumi/aws": "^6.4.0",
+    "@pulumi/eks": "^2.2.0",
+    "@pulumi/kubernetes": "^4.5.4"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
